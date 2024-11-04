@@ -2,15 +2,18 @@ import React from 'react'
 import ReactPlayer from 'react-player'
 import './Feature.css'
 
-const Feature = (props) => {
+const videoWidth = 800
+export const Feature = ({feature}) => {
+  
   return (
-    <div className = "feature">
-        <p className = "feature-header">Zoom 2</p>
+    <div className = "feature" id = {feature.featureID ? feature.featureID : "null-feature"}>
+        <p className = "feature-header">{feature.featureName ? feature.featureName : "null"}</p>
         <div className = "feature-video-container">
-        <ReactPlayer className = "feature-video" url = {`${process.env.PUBLIC_URL}/Videos/Zoom2.mov`} controls ={true} />
+          {feature.featureVideoPath? <ReactPlayer className = "feature-video" url = {`${process.env.PUBLIC_URL}` + feature.featureVideoPath} loop = {true} playing = {true} controls = {true} muted = {true} width = {videoWidth} height = {videoWidth * 9/16}/>
+        : <></>}
         </div>
         
-        <p className = "feature-description">This Zoom will draw a square box where you want to zoom towards. Then, the rest of the plot and axes fade. The box and the plot it contains are scaled up, and once done, the new axes appear. A magnifying glass is also displayed at the top-left, along with the zoom scale.</p>
+        <p className = "feature-description">{feature.featureDescription}</p>
     </div>
 
   )

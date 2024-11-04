@@ -1,12 +1,14 @@
 import React from 'react'
-import Feature from './Feature'
-
-const FeatureGroup = (props) => {
+import {Feature} from './Feature'
+import {FeatureData} from './FeatureData'
+const FeatureGroup = () => {
   return (
     <div>
-    {props.features.map((feature) => {
+    {FeatureData.map((feature) => {
+        console.log(feature)
         return (
-            <Feature feature = {feature} />
+            
+            <Feature feature = {feature}/>
         )
 })} </div>
   )
